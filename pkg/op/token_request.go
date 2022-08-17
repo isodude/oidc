@@ -5,22 +5,19 @@ import (
 	"net/http"
 	"net/url"
 
-	httphelper "github.com/zitadel/oidc/pkg/http"
-	"github.com/zitadel/oidc/pkg/oidc"
+	httphelper "github.com/zitadel/oidc/v2/pkg/http"
+	"github.com/zitadel/oidc/v2/pkg/oidc"
 )
 
 type Exchanger interface {
-	Issuer() string
 	Storage() Storage
 	Decoder() httphelper.Decoder
-	Signer() Signer
 	Crypto() Crypto
 	AuthMethodPostSupported() bool
 	AuthMethodPrivateKeyJWTSupported() bool
 	GrantTypeRefreshTokenSupported() bool
 	GrantTypeTokenExchangeSupported() bool
 	GrantTypeJWTAuthorizationSupported() bool
-	GrantTypeClientCredentialsSupported() bool
 }
 
 func tokenHandler(exchanger Exchanger) func(w http.ResponseWriter, r *http.Request) {
@@ -43,11 +40,6 @@ func tokenHandler(exchanger Exchanger) func(w http.ResponseWriter, r *http.Reque
 		case string(oidc.GrantTypeTokenExchange):
 			if exchanger.GrantTypeTokenExchangeSupported() {
 				TokenExchange(w, r, exchanger)
-				return
-			}
-		case string(oidc.GrantTypeClientCredentials):
-			if exchanger.GrantTypeClientCredentialsSupported() {
-				ClientCredentialsExchange(w, r, exchanger)
 				return
 			}
 		case "":
@@ -117,7 +109,7 @@ func AuthorizeCodeChallenge(tokenReq *oidc.AccessTokenRequest, challenge *oidc.C
 //AuthorizePrivateJWTKey authorizes a client by validating the client_assertion's signature with a previously
 //registered public key (JWT Profile)
 func AuthorizePrivateJWTKey(ctx context.Context, clientAssertion string, exchanger JWTAuthorizationGrantExchanger) (Client, error) {
-	jwtReq, err := VerifyJWTAssertion(ctx, clientAssertion, exchanger.JWTProfileVerifier())
+	jwtReq, err := VerifyJWTAssertion(ctx, clientAssertion, exchanger.JWTProfileVerifier(ctx))
 	if err != nil {
 		return nil, err
 	}

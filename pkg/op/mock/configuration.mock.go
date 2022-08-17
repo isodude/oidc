@@ -5,11 +5,13 @@
 package mock
 
 import (
+	http "net/http"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	op "github.com/zitadel/oidc/pkg/op"
 	language "golang.org/x/text/language"
+
+	op "github.com/zitadel/oidc/v2/pkg/op"
 )
 
 // MockConfiguration is a mock of Configuration interface.
@@ -105,20 +107,6 @@ func (mr *MockConfigurationMockRecorder) EndSessionEndpoint() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EndSessionEndpoint", reflect.TypeOf((*MockConfiguration)(nil).EndSessionEndpoint))
 }
 
-// GrantTypeClientCredentialsSupported mocks base method.
-func (m *MockConfiguration) GrantTypeClientCredentialsSupported() bool {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GrantTypeClientCredentialsSupported")
-	ret0, _ := ret[0].(bool)
-	return ret0
-}
-
-// GrantTypeClientCredentialsSupported indicates an expected call of GrantTypeClientCredentialsSupported.
-func (mr *MockConfigurationMockRecorder) GrantTypeClientCredentialsSupported() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GrantTypeClientCredentialsSupported", reflect.TypeOf((*MockConfiguration)(nil).GrantTypeClientCredentialsSupported))
-}
-
 // GrantTypeJWTAuthorizationSupported mocks base method.
 func (m *MockConfiguration) GrantTypeJWTAuthorizationSupported() bool {
 	m.ctrl.T.Helper()
@@ -159,6 +147,20 @@ func (m *MockConfiguration) GrantTypeTokenExchangeSupported() bool {
 func (mr *MockConfigurationMockRecorder) GrantTypeTokenExchangeSupported() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GrantTypeTokenExchangeSupported", reflect.TypeOf((*MockConfiguration)(nil).GrantTypeTokenExchangeSupported))
+}
+
+// Insecure mocks base method.
+func (m *MockConfiguration) Insecure() bool {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Insecure")
+	ret0, _ := ret[0].(bool)
+	return ret0
+}
+
+// Insecure indicates an expected call of Insecure.
+func (mr *MockConfigurationMockRecorder) Insecure() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Insecure", reflect.TypeOf((*MockConfiguration)(nil).Insecure))
 }
 
 // IntrospectionAuthMethodPrivateKeyJWTSupported mocks base method.
@@ -203,18 +205,18 @@ func (mr *MockConfigurationMockRecorder) IntrospectionEndpointSigningAlgorithmsS
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IntrospectionEndpointSigningAlgorithmsSupported", reflect.TypeOf((*MockConfiguration)(nil).IntrospectionEndpointSigningAlgorithmsSupported))
 }
 
-// Issuer mocks base method.
-func (m *MockConfiguration) Issuer() string {
+// IssuerFromRequest mocks base method.
+func (m *MockConfiguration) IssuerFromRequest(arg0 *http.Request) string {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Issuer")
+	ret := m.ctrl.Call(m, "IssuerFromRequest", arg0)
 	ret0, _ := ret[0].(string)
 	return ret0
 }
 
-// Issuer indicates an expected call of Issuer.
-func (mr *MockConfigurationMockRecorder) Issuer() *gomock.Call {
+// IssuerFromRequest indicates an expected call of IssuerFromRequest.
+func (mr *MockConfigurationMockRecorder) IssuerFromRequest(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Issuer", reflect.TypeOf((*MockConfiguration)(nil).Issuer))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IssuerFromRequest", reflect.TypeOf((*MockConfiguration)(nil).IssuerFromRequest), arg0)
 }
 
 // KeysEndpoint mocks base method.

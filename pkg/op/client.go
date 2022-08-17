@@ -3,21 +3,18 @@ package op
 import (
 	"time"
 
-	"github.com/zitadel/oidc/pkg/oidc"
-)
-
-//go:generate go get github.com/dmarkham/enumer
-//go:generate go run github.com/dmarkham/enumer -linecomment -sql -json -text -yaml -gqlgen -type=ApplicationType,AccessTokenType
-
-const (
-	ApplicationTypeWeb       ApplicationType = iota // web
-	ApplicationTypeUserAgent                        // user_agent
-	ApplicationTypeNative                           // native
+	"github.com/zitadel/oidc/v2/pkg/oidc"
 )
 
 const (
-	AccessTokenTypeBearer AccessTokenType = iota // bearer
-	AccessTokenTypeJWT                           // JWT
+	ApplicationTypeWeb ApplicationType = iota
+	ApplicationTypeUserAgent
+	ApplicationTypeNative
+)
+
+const (
+	AccessTokenTypeBearer AccessTokenType = iota
+	AccessTokenTypeJWT
 )
 
 type ApplicationType int

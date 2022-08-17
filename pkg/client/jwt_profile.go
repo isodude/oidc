@@ -5,12 +5,12 @@ import (
 
 	"golang.org/x/oauth2"
 
-	"github.com/zitadel/oidc/pkg/http"
-	"github.com/zitadel/oidc/pkg/oidc"
+	"github.com/zitadel/oidc/v2/pkg/http"
+	"github.com/zitadel/oidc/v2/pkg/oidc"
 )
 
-// JWTProfileExchange handles the oauth2 jwt profile exchange
-func JWTProfileExchange(jwtProfileGrantRequest *oidc.JWTProfileGrantRequest, caller TokenEndpointCaller) (*oauth2.Token, error) {
+//JWTProfileExchange handles the oauth2 jwt profile exchange
+func JWTProfileExchange(jwtProfileGrantRequest *oidc.JWTProfileGrantRequest, caller tokenEndpointCaller) (*oauth2.Token, error) {
 	return CallTokenEndpoint(jwtProfileGrantRequest, caller)
 }
 
