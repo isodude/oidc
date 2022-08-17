@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
+	"github.com/zitadel/logging"
 	httphelper "github.com/zitadel/oidc/v2/pkg/http"
 	"github.com/zitadel/oidc/v2/pkg/oidc"
 )
@@ -33,6 +34,8 @@ func Introspect(w http.ResponseWriter, r *http.Request, introspector Introspecto
 	token, clientID, err := ParseTokenIntrospectionRequest(r, introspector)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusUnauthorized)
+                logging.Debugf("introspect error: %v", err)
+
 		return
 	}
 	tokenID, subject, ok := getTokenIDAndSubject(r.Context(), introspector, token)
@@ -43,6 +46,7 @@ func Introspect(w http.ResponseWriter, r *http.Request, introspector Introspecto
 	err = introspector.Storage().SetIntrospectionFromToken(r.Context(), response, tokenID, subject, clientID)
 	if err != nil {
 		httphelper.MarshalJSON(w, response)
+                logging.Debugf("introspect error: %v", err)
 		return
 	}
 	response.SetActive(true)
