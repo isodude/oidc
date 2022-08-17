@@ -6,7 +6,7 @@ import (
 
 	"gopkg.in/square/go-jose.v2"
 
-	"github.com/zitadel/oidc/v2/pkg/oidc"
+	"github.com/isodude/oidc/v2/pkg/oidc"
 )
 
 type AuthStorage interface {

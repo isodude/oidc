@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/zitadel/oidc/v2/pkg/crypto"
-	"github.com/zitadel/oidc/v2/pkg/oidc"
-	"github.com/zitadel/oidc/v2/pkg/strings"
+	"github.com/isodude/oidc/v2/pkg/crypto"
+	"github.com/isodude/oidc/v2/pkg/oidc"
+	"github.com/isodude/oidc/v2/pkg/strings"
 )
 
 type TokenCreator interface {

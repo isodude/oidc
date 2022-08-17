@@ -11,9 +11,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"gopkg.in/square/go-jose.v2"
 
-	"github.com/zitadel/oidc/v2/pkg/oidc"
-	"github.com/zitadel/oidc/v2/pkg/op"
-	"github.com/zitadel/oidc/v2/pkg/op/mock"
+	"github.com/isodude/oidc/v2/pkg/oidc"
+	"github.com/isodude/oidc/v2/pkg/op"
+	"github.com/isodude/oidc/v2/pkg/op/mock"
 )
 
 func TestDiscover(t *testing.T) {

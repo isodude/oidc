@@ -4,9 +4,9 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/zitadel/oidc/v2/pkg/client/rp"
-	httphelper "github.com/zitadel/oidc/v2/pkg/http"
-	"github.com/zitadel/oidc/v2/pkg/oidc"
+	"github.com/isodude/oidc/v2/pkg/client/rp"
+	httphelper "github.com/isodude/oidc/v2/pkg/http"
+	"github.com/isodude/oidc/v2/pkg/oidc"
 )
 
 const (

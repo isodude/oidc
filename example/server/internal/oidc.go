@@ -5,8 +5,8 @@ import (
 
 	"golang.org/x/text/language"
 
-	"github.com/zitadel/oidc/v2/pkg/oidc"
-	"github.com/zitadel/oidc/v2/pkg/op"
+	"github.com/isodude/oidc/v2/pkg/oidc"
+	"github.com/isodude/oidc/v2/pkg/op"
 )
 
 const (

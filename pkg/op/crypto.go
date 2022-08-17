@@ -1,7 +1,7 @@
 package op
 
 import (
-	"github.com/zitadel/oidc/v2/pkg/crypto"
+	"github.com/isodude/oidc/v2/pkg/crypto"
 )
 
 type Crypto interface {

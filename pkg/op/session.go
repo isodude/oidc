@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"net/url"
 
-	httphelper "github.com/zitadel/oidc/v2/pkg/http"
-	"github.com/zitadel/oidc/v2/pkg/oidc"
+	httphelper "github.com/isodude/oidc/v2/pkg/http"
+	"github.com/isodude/oidc/v2/pkg/oidc"
 )
 
 type SessionEnder interface {
